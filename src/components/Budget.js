@@ -4,6 +4,14 @@ import { AppContext } from '../context/AppContext';
 const Budget = () => {
     const { budget, currency, dispatch } = useContext(AppContext);
     const [newBudget, setNewBudget] = useState(budget);
+
+    const currencies = [
+        {name: 'Dollar', symbol: '$'},
+        {name: 'Euro', symbol: '€'},
+        {name: 'GBP', symbol: '£'},
+        {name: 'Rupee', symbol: '₹'}
+    ]
+
     const handleBudgetChange = (event) => {
         const budget = parseInt(event.target.value || 0, 10);
         if (budget < 0 || budget > 20000) {
@@ -11,6 +19,13 @@ const Budget = () => {
             return
         }
         setNewBudget(budget);
+    }
+
+    const handleCurrencyChange = (event) => {
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: event.target.value
+        })
     }
 
     const handleSetBudget = () => {
@@ -24,6 +39,16 @@ const Budget = () => {
             <span>Budget: {currency}{budget}</span>
             <input type="number" step="10" value={newBudget} onChange={handleBudgetChange}></input>
             <button onClick={handleSetBudget}>Save</button>
+            <select className="form-control d-inline-block w-25" value={currency} onChange={handleCurrencyChange}>
+                {currencies.map((currency, index) => {
+                    return (<option
+                        key={index}
+                        value={currency.symbol}
+                        >
+                        {currency.symbol} {currency.name}
+                    </option>)
+                })}
+            </select>
         </div>
     );
 };
