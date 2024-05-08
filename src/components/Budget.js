@@ -33,8 +33,13 @@ const Budget = () => {
 
         console.log(totalExpenses)
 
-        if (newBudget < totalExpenses || budget > 20000) {
+        if (newBudget < totalExpenses) {
             alert(`Budget cannot be lower than the expenses (${totalExpenses})`);
+            return
+        }
+
+        if (newBudget > 20000) {
+            alert(`Budget cannot exceed ${currency} 20000`);
             return
         }
         dispatch({
