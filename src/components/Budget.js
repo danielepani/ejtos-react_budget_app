@@ -43,10 +43,12 @@ const Budget = () => {
         });
     }
     return (
-        <div className='alert alert-secondary'>
-            <span>Budget: {currency}</span>
-            <input type="number" step="10" value={newBudget} onChange={handleBudgetChange}></input>
-            <button onClick={handleSetBudget}>Save</button>
+        <div className='alert alert-secondary d-flex justify-content-between'>
+            <label>
+                <span>Budget: {currency}</span>
+                <input type="number" step="10" value={newBudget} onChange={handleBudgetChange}></input>
+                <button onClick={handleSetBudget}>Save</button>
+            </label>
             <select className="form-control d-inline-block w-25" value={currency} onChange={handleCurrencyChange}>
                 {currencies.map((currency, index) => {
                     return (<option
