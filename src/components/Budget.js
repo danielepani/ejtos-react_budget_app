@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
+import CustomSelect from "./CustomSelect";
 
 const Budget = () => {
     const { budget, currency, expenses, dispatch } = useContext(AppContext);
@@ -18,10 +19,10 @@ const Budget = () => {
         setNewBudget(budget);
     }
 
-    const handleCurrencyChange = (event) => {
+    const handleCurrencyChange = (currency) => {
         dispatch({
             type: 'CHG_CURRENCY',
-            payload: event.target.value
+            payload: currency
         })
     }
 
@@ -54,16 +55,7 @@ const Budget = () => {
                 <input type="number" step="10" value={newBudget} onChange={handleBudgetChange}></input>
                 <button onClick={handleSetBudget}>Save</button>
             </label>
-            <select className="form-control d-inline-block w-25" value={currency} onChange={handleCurrencyChange}>
-                {currencies.map((currency, index) => {
-                    return (<option
-                        key={index}
-                        value={currency.symbol}
-                        >
-                        {currency.symbol} {currency.name}
-                    </option>)
-                })}
-            </select>
+            <CustomSelect value={currency} onChange={handleCurrencyChange} options={currencies} />
         </div>
     );
 };

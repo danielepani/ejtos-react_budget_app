@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.btn-success.dropdown-toggle {
+  --bs-btn-border-color: #93E499;
+  --bs-btn-bg: #93E499;
+}
+.dropdown-item.bg-success {
+  --bs-success-rgb: 147,228,153;
+}
+.dropdown-item.bg-success:hover {
+  --bs-success-rgb: 255,255,255;
+}
