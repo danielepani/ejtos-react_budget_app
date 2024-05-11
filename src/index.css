@@ -21,3 +21,8 @@ code {
 .dropdown-item.bg-success:hover {
   --bs-success-rgb: 255,255,255;
 }
+.qty-vary {
+  width:20px;
+  height:20px;
+  font-size:14px !important;
+}
